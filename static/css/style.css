@@ -12,7 +12,7 @@ h1 {
 }
 
 header {
-    background-image: url("{% static 'images/hero.jpg' %}");
+    background-image: url("/static/images/hero.jpg");
     background-size: cover;
     background-position: center;
     height: 300px;
@@ -77,4 +77,53 @@ header h1 {
 .container p {
     font-size: 1.2em;
     margin: 10px 0;
+}
+
+/* Static CSS for Navigation and Footer */
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;  /* Removes the bullet points from the list */
+    padding: 0;  /* Removes default padding from the list */
+    text-align: center;  /* Centers the list items horizontally */
+}
+
+nav ul li {
+    display: inline;  /* Displays list items horizontally */
+    margin-right: 20px;  /* Adds space between each list item */
+}
+
+nav ul li a {
+    color: white;  /* White text color for the links */
+    text-decoration: none;  /* Removes underline from links */
+    font-weight: bold;  /* Makes the text bold */
+    margin-right: 30px;  /* Increase space between links */
+}
+
+nav ul li a:hover {
+    color: #ff6347;  /* Change text color to a light red (or any other color) when hovering */
+}
+
+footer {
+    background-color: #333;  /* Dark background similar to the nav bar */
+    color: white;  /* White text color */
+    padding: 10px;  /* Adds padding around the footer */
+    text-align: center;  /* Centers the text in the footer */
+    position: fixed;  /* Makes the footer stick at the bottom of the page */
+    bottom: 0;  /* Positions the footer at the bottom */
+    width: 100%;  /* Ensures the footer spans the entire width of the page */
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        text-align: left;  /* Align the list items to the left on smaller screens */
+    }
+
+    nav ul li {
+        display: block;  /* Stack the list items vertically */
+        margin-right: 0;  /* Remove horizontal spacing */
+    }
 }

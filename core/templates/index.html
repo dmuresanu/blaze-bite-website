@@ -1,22 +1,11 @@
 <!-- templates/index.html -->
-{% load static %}
-        
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        
+{% extends 'base.html' %}
 
-        <title>Restaurant</title>
-    </head>
-    <body>
-        <header>
-            <h1>Welcome to Our Restaurant</h1>
-        </header>
-        <div class="container">
-            <p>Explore our delicious menu, learn about our story, and contact us for more information!</p>
-        </div>
-    </body>
-</html>
+{% block title %}Home - Restaurant{% endblock %}
+
+{% block content %}
+    <header>
+        <h1>Welcome to Our Restaurant</h1>
+    </header>
+    <p>Explore our delicious menu, learn about our story, and contact us for more information!</p>
+{% endblock %}
