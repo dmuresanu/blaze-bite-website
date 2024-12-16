@@ -1,0 +1,13 @@
+<!-- templates/add_menu_item.html -->
+{% extends 'base.html' %}
+
+{% block title %}Add Menu Item - Restaurant{% endblock %}
+
+{% block content %}
+    <h2>Add a New Menu Item</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Menu Item</button>
+    </form>
+{% endblock %}
