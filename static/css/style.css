@@ -62,3 +62,19 @@ header h1 {
 .menu-item p {
     margin: 5px 0;
 }
+
+/* Style for About and Contact Pages */
+header h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.container p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}

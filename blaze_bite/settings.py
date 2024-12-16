@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure--$46wr$xx))hi(fye&%_brg%#3=#jp)f)(11$ww@b-28bglvca
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-dmuresanu-blazebitewebs-i7ks7zxaeks.ws-eu117.gitpod.io']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-dmuresanu-blazebitewebs-i7ks7zxaeks.ws-eu117.gitpod.io',
+]
 
 
 # Application definition
@@ -37,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -54,8 +59,8 @@ ROOT_URLCONF = 'blaze_bite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [],  # Add global template directories here if needed
+        'APP_DIRS': True,  # Ensures Django searches within app-specific template directories
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -66,6 +71,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'blaze_bite.wsgi.application'
 
