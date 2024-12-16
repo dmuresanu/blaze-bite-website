@@ -2,55 +2,60 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../static/css/style.css">
-        
-        <title>{% block title %}Restaurant{% endblock %}</title>
-    </head>
-    <script>
-        window.onscroll = function() { toggleNavbar() };
-    
-        function toggleNavbar() {
-            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                document.querySelector("nav").classList.add("scrolled");
-            } else {
-                document.querySelector("nav").classList.remove("scrolled");
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>{% block title %}Restaurant{% endblock %}</title>
+</head>
+<script>
+    window.onscroll = function() { toggleNavbar() };
+
+    function toggleNavbar() {
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            document.querySelector("nav").classList.add("scrolled");
+        } else {
+            document.querySelector("nav").classList.remove("scrolled");
         }
-    </script>
-    
-    <body>
-    
-        <header>
-            <nav class="navbar">
-                <div class="container">
-                    <a href="/" class="logo">Restaurant</a>
-                    <ul class="nav-links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/menu/">Menu</a></li>
-                        <li><a href="/about/">About</a></li>
-                        <li><a href="/contact/">Contact</a></li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="hero">
-                <div class="hero-text">
-                    <h1>Welcome to Our Restaurant</h1>
-                    <p>Enjoy the finest dining experience with us</p>
-                    <a href="/menu/" class="cta-button">Explore Menu</a>
-                </div>
-            </div>
-        </header>
-    
+    }
+</script>
+
+<body>
+
+    <!-- Header Section with Hero Image -->
+    <header>
+        <div class="hero-text">
+            <h1>Welcome to Our Restaurant</h1>
+            <p>Enjoy the finest dining experience with us</p>
+            <a href="/menu/" class="cta-button">Explore Menu</a>
+        </div>
+    </header>
+
+    <!-- Navbar Section -->
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/static/images/logo.png" alt="Restaurant Logo">
+            </a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/menu/">Menu</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
         {% block content %}{% endblock %}
-    
-        <footer>
-            <div class="container">
-                <p>&copy; 2024 Restaurant. All Rights Reserved.</p>
-            </div>
-        </footer>
-    
-    </body>
-    </html>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Restaurant. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
