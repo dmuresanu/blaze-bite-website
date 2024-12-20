@@ -1,0 +1,1 @@
+web: gunicorn blaze_bite.wsgi
