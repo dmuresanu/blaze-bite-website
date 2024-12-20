@@ -19,7 +19,7 @@ header {
     align-items: center;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    position: relative; /* Makes sure content stays on top */
+    position: relative; /* Keeps header behind navbar */
     z-index: 0; /* Keeps header behind navbar */
 }
 
@@ -67,7 +67,7 @@ nav {
     padding: 15px 0;
     z-index: 1000; /* Keeps navbar on top of header */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Places logo left, links right */
     align-items: center;
     transition: background-color 0.3s ease-in-out;
     box-shadow: none; /* Removes initial shadow */
@@ -80,17 +80,17 @@ nav.scrolled {
 
 /* Logo styling */
 nav .logo img {
-    max-height: 50px;
+    max-height: 80px; /* Adjust logo size here */
     width: auto;
 }
 
-/* Navbar links */
+/* Navbar links styling */
 nav ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end; /* Aligns the links to the right */
     align-items: center;
 }
 
@@ -111,6 +111,12 @@ nav ul li a {
 nav ul li a:hover {
     color: #ff7f50;
 }
+
+nav ul li a.active {
+    color: #ff7f50;
+    text-decoration: underline;
+}
+
 
 /* Content Section */
 main {
@@ -161,7 +167,7 @@ footer a:hover {
         font-size: 16px;
         padding: 12px 24px;
     }
-    
+
     footer {
         font-size: 0.9em;
     }
