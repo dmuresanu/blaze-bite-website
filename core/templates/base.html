@@ -42,10 +42,11 @@
                 <li><a href="/menu/" class="{% if request.path == '/menu/' %}active{% endif %}">Menu</a></li>
                 <li><a href="/about/" class="{% if request.path == '/about/' %}active{% endif %}">About</a></li>
                 <li><a href="/contact/" class="{% if request.path == '/contact/' %}active{% endif %}">Contact</a></li>
-
+                <li><a href="/booking/" class="{% if request.path == '/booking/' %}active{% endif %}">Book a Table</a></li>
             </ul>
         </div>
     </nav>
+    
 
     <main>
         {% block content %}{% endblock %}
