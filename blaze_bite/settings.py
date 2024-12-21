@@ -155,3 +155,13 @@ DATABASES = {
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email settings for Gmail
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Gmail's SMTP server
+EMAIL_PORT = 587  # Port for TLS
+EMAIL_USE_TLS = True  # Use TLS (secure connection)
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")  # Loaded from env.py
+EMAIL_HOST_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD")  # Loaded from env.py
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # The email address that will appear as the sender
+RESTAURANT_EMAIL = os.environ.get("RESTAURANT_EMAIL")  # Loaded from env.py

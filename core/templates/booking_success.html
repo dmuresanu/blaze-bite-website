@@ -3,6 +3,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Booking Confirmed!</h1>
-  <p>Thank you for booking a table, your reservation has been confirmed.</p>
+    <div class="success-message">
+        <h2>Booking Successful!</h2>
+        <p>Thank you for booking with us! You will receive a confirmation email shortly.</p>
+        <a href="{% url 'index' %}" class="btn btn-primary">Back to Home</a>
+    </div>
 {% endblock %}
