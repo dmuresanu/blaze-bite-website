@@ -4,6 +4,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from PIL import Image
 import io
 from .models import MenuItem
+from .models import Booking
 
 class MenuItemTestCase(TestCase):
     
@@ -36,4 +37,21 @@ class MenuItemTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Menu")
         self.assertContains(response, "Burger")  # Ensure the menu item is displayed
+
+class BookingTestCase(TestCase):
+
+    def test_booking_form_submission(self):
+        # Simulate a form submission (without email functionality)
+        response = self.client.post(reverse('booking'), {
+            'full_name': 'John Doe',
+            'email': 'johndoe@example.com',
+            'phone_number': '1234567890',
+            'date': '2024-12-25',
+            'time': '19:00'
+        })
+        
+        # Check if the booking is created and redirected correctly
+        self.assertEqual(response.status_code, 302)  # 302 means redirect
+        self.assertRedirects(response, reverse('booking_success'))  # Check if redirected to success page
+        self.assertEqual(Booking.objects.count(), 1)  # Ensure one booking was created        
 

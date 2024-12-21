@@ -1,18 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.core.mail import send_mail
-from django.conf import settings
 from .forms import MenuItemForm, BookingForm
 from .models import MenuItem, Booking
-import datetime
-
-# Function to send booking confirmation email
-def send_booking_confirmation_email(booking):
-    subject = f"Booking Confirmation - {booking.full_name}"
-    message = f"Dear {booking.full_name},\n\nYour table has been successfully booked for {booking.date} at {booking.time}.\n\nBest regards,\nRestaurant Team"
-    from_email = settings.DEFAULT_FROM_EMAIL
-    recipient_list = [booking.email, settings.RESTAURANT_EMAIL]  # Sends to user and restaurant
-    send_mail(subject, message, from_email, recipient_list)
 
 def index(request):
     return render(request, 'index.html')
