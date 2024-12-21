@@ -39,14 +39,16 @@ def contact(request):
 
 def booking(request):
     if request.method == 'POST':
+        print("POST request received")  # Debug log
         form = BookingForm(request.POST)
         if form.is_valid():
-            # Save the form and send confirmation email
+            print("Form is valid")  # Debug log
             booking = form.save()
             send_booking_confirmation_email(booking)
             messages.success(request, 'Your booking has been successfully made!')
             return redirect('booking_success')  # Redirect to a booking success page
         else:
+            print("Form is invalid:", form.errors)  # Debug log
             messages.error(request, 'Please correct the errors below.')
     else:
         form = BookingForm()

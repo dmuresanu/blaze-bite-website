@@ -11,6 +11,6 @@ os.environ.setdefault(
 )
 
 # Gmail email settings
-os.environ.setdefault("EMAIL_HOST_USER", "blazebite24@gmail.com")
-os.environ.setdefault("GMAIL_APP_PASSWORD", "awun ajnk odcg jjgp")  
-os.environ.setdefault("RESTAURANT_EMAIL", "blazebite24@gmail.com")
+os.environ.setdefault("GMAIL_USERNAME", "blazebite24@gmail.com")
+os.environ.setdefault("GMAIL_PASSWORD", "awun ajnk odcg jjgp")  
+
