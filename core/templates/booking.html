@@ -1,0 +1,15 @@
+<!-- core/templates/core/booking.html -->
+
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Book a Table</h1>
+  <p>Fill in the details below to book a table.</p>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Render the form fields -->
+
+    <button type="submit">Book Now</button>
+  </form>
+{% endblock %}
