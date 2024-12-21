@@ -37,4 +37,7 @@ def booking(request):
     else:
         form = BookingForm()
 
-    return render(request, 'core/booking.html', {'form': form})    
+    return render(request, 'core/booking.html', {'form': form}) 
+
+def booking_success(request):
+    return render(request, 'core/booking_success.html')       
