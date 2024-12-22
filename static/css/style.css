@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
+    background-color: #443c44;
     overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
@@ -120,8 +120,14 @@ nav ul li a.active {
 
 /* Content Section */
 main {
-    margin-top: 150px; /* Adds space below the fixed navbar */
+    margin-top: 150px;
     padding: 40px 20px;
+    background-color: #443c44;
+}
+
+body.homepage main {
+    padding: 0;
+    background: none;
 }
 
 /* Footer Styling */
