@@ -1,0 +1,15 @@
+<!-- templates/staff_profile.html -->
+{% extends 'base.html' %}
+
+{% block title %}Staff Profile - Restaurant{% endblock %}
+
+{% block content %}
+    <h2>Staff Profile</h2>
+
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Full Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+
+    <a href="{% url 'edit_profile' %}">Edit Profile</a>
+
+{% endblock %}
