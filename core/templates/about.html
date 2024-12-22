@@ -1,9 +1,80 @@
 {% extends 'base.html' %}
 
-{% block title %}About Us - Restaurant{% endblock %}
+{% block title %}About Us - Blaze Bite Restaurant{% endblock %}
 
 {% block content %}
-    <h2>About Us</h2>
-    <p>Welcome to our restaurant! We are passionate about providing the finest dining experience to our guests. Our menu is a collection of carefully selected dishes made from the freshest ingredients, sourced locally whenever possible.</p>
-    <p>Our mission is to create memorable meals and provide outstanding service in a warm and welcoming atmosphere.</p>
+    <!-- About Us Section -->
+    <section class="about-us-section">
+        <h2>About Us</h2>
+        <p>Welcome to <strong>Blaze Bite Restaurant</strong>, where culinary innovation meets timeless tradition. Located in the heart of the city, we strive to offer a unique dining experience that delights the senses and brings people together.</p>
+        <p>Our chefs carefully craft each dish using only the finest locally sourced ingredients, ensuring every bite is a reflection of quality and passion. Whether you're here for a cozy dinner with friends or celebrating a special occasion, we guarantee a memorable dining experience.</p>
+        
+        <!-- Mission Statement Section -->
+        <div class="mission-statement">
+            <h3>Our Mission</h3>
+            <p>At Blaze Bite Restaurant, our mission is to bring you the finest in modern dining with an emphasis on freshness, flavor, and creativity. We are committed to providing an unforgettable culinary experience with outstanding service, where each meal tells a story of quality ingredients and expert preparation.</p>
+        </div>
+
+        <!-- Restaurant History Section -->
+        <div class="history-section">
+            <h3>Our History</h3>
+            <p>Founded in 2015 by passionate food lovers Emily and John Blake, Blaze Bite began as a small bistro with a big vision. The dream was to create a place where people could enjoy delicious meals in a warm, welcoming atmosphere. Over the years, we’ve expanded and refined our menu, with every dish crafted to perfection.</p>
+            <p>Today, Blaze Bite Restaurant is a beloved local favorite, known for its innovative dishes and exceptional customer service. We take pride in our community involvement, sourcing many of our ingredients from local farmers and producers. Our aim is to continually elevate the dining experience for our guests and set the standard for quality and excellence.</p>
+        </div>
+
+        <!-- Our Values Section -->
+        <div class="values-section">
+            <h3>Our Values</h3>
+            <ul>
+                <li><strong>Quality:</strong> We believe in using only the highest quality ingredients, supporting sustainable practices, and staying true to the art of cooking.</li>
+                <li><strong>Creativity:</strong> Our chefs continuously experiment with new flavors and techniques to bring unique dishes to your table.</li>
+                <li><strong>Community:</strong> We’re proud to serve the local community and build relationships with our neighbors, farmers, and suppliers.</li>
+                <li><strong>Sustainability:</strong> We are committed to reducing our environmental impact by using eco-friendly practices wherever possible.</li>
+                <li><strong>Hospitality:</strong> Every guest is treated like family. Our goal is to make you feel at home and ensure your dining experience exceeds expectations.</li>
+            </ul>
+        </div>
+
+        <!-- Meet the Team Section -->
+        <div class="team-section">
+            <h3>Meet Our Team</h3>
+            <p>Our talented team of chefs, managers, and staff are what make Blaze Bite Restaurant exceptional. They are passionate about providing guests with a memorable dining experience from start to finish.</p>
+
+            <!-- Staff Images -->
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="/static/images/chef_1.jpg" alt="Chef John Blake" class="team-img">
+                    <p><strong>Chef John Blake</strong><br>Head Chef & Founder</p>
+                    <p>With over 15 years of culinary experience, John is the visionary behind Blaze Bite’s mouth-watering menu. His creativity and passion for food inspire the entire team.</p>
+                </div>
+                <div class="team-member">
+                    <img src="/static/images/chef_2.jpg" alt="Chef Sarah Lee" class="team-img">
+                    <p><strong>Chef Sarah Lee</strong><br>Sous Chef</p>
+                    <p>Sarah has worked in top kitchens around the world, bringing a global flair to our menu. She works closely with John to ensure every dish is prepared with precision and creativity.</p>
+                </div>
+                <div class="team-member">
+                    <img src="/static/images/manager.jpg" alt="Mark Thompson" class="team-img">
+                    <p><strong>Mark Thompson</strong><br>Restaurant Manager & Co-Founder</p>
+                    <p>Mark oversees day-to-day operations, ensuring the restaurant runs smoothly and guests receive outstanding service. His dedication to hospitality is key to our success.</p>
+                </div>
+                <div class="team-member">
+                    <img src="/static/images/waiter.jpg" alt="Emily Blake" class="team-img">
+                    <p><strong>Emily Blake</strong><br>Head Waiter</p>
+                    <p>Emily leads the front-of-house team with warmth and professionalism. Her goal is to ensure every guest feels at home and has an exceptional experience from the moment they walk through the door.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Restaurant Photos Section -->
+        <div class="photos-section">
+            <h3>Our Restaurant</h3>
+            <p>Our restaurant has been designed with elegance and comfort in mind. From the cozy dining area to the chic bar, every space is crafted to create the perfect ambiance for any occasion.</p>
+
+            <!-- Gallery of Restaurant Photos -->
+            <div class="restaurant-gallery">
+                <img src="/static/images/restaurant_1.png" alt="Restaurant Interior 1">
+                <img src="/static/images/restaurant_2.jpg" alt="Restaurant Interior 2">
+                <img src="/static/images/restaurant_3.jpg" alt="Restaurant Dining Area">
+            </div>
+        </div>
+    </section>
 {% endblock %}

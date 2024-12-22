@@ -306,6 +306,108 @@ input.flatpickr-input:focus {
     border-color: #ff7f50;  /* Make border orange when focused */
 }
 
+
+/* About Us Section Styling */
+.about-us-section {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Mission, History, and Values Sections */
+.mission-statement, .history-section, .values-section {
+    margin: 40px 0;
+}
+
+h3 {
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+/* Values Section - List Style */
+.values-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.values-section li {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+/* Meet the Team Section */
+.team-section {
+    margin-top: 60px;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.team-member {
+    text-align: center;
+    max-width: 200px;
+}
+
+.team-img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.team-member p {
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+/* Restaurant Photos Section */
+.photos-section {
+    margin-top: 60px;
+}
+
+.restaurant-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.restaurant-gallery img {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .team-members {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .restaurant-gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .restaurant-gallery img {
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 20px;
+    }
+}
+
+
 /* Success Section Styling */
 .success-section {
     text-align: center;
