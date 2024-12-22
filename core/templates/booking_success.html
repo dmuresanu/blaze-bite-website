@@ -2,10 +2,14 @@
 
 {% extends 'base.html' %}
 
+{% block title %}Booking Successful - Restaurant{% endblock %}
+
 {% block content %}
+  <section class="success-section">
     <div class="success-message">
-        <h2>Booking Successful!</h2>
-        <p>Thank you for your booking! Your reservation has been confirmed.</p>
-        <a href="{% url 'index' %}" class="btn btn-primary">Back to Home</a>
+      <h2>Booking Successful!</h2>
+      <p>Thank you for your booking! Your reservation has been confirmed.</p>
+      <a href="{% url 'index' %}" class="btn btn-primary">Back to Home</a>
     </div>
+  </section>
 {% endblock %}

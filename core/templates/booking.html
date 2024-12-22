@@ -2,34 +2,38 @@
 
 {% extends 'base.html' %}
 
+{% block title %}Book a Table - Restaurant{% endblock %}
+
 {% block content %}
-  <h1>Book a Table</h1>
-  <p>Fill in the details below to book a table.</p>
+  <section class="booking-section">
+    <h1>Book a Table</h1>
+    <p>Fill in the details below to book a table.</p>
 
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
+    <form method="post" class="booking-form">
+      {% csrf_token %}
+      {{ form.as_p }}
 
-    {% if form.errors %}
+      {% if form.errors %}
         <div class="form-errors">
-            <ul>
-                {% for field in form %}
-                    {% for error in field.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                {% endfor %}
-            </ul>
+          <ul>
+            {% for field in form %}
+              {% for error in field.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
         </div>
-    {% endif %}
+      {% endif %}
 
-    <button type="submit">Book Now</button>
-  </form>
+      <button type="submit" class="btn btn-submit">Book Now</button>
+    </form>
 
-  {% if messages %}
+    {% if messages %}
       <div class="messages">
-          {% for message in messages %}
-              <div class="message {{ message.tags }}">{{ message }}</div>
-          {% endfor %}
+        {% for message in messages %}
+          <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
       </div>
-  {% endif %}
+    {% endif %}
+  </section>
 {% endblock %}
