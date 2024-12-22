@@ -67,8 +67,8 @@ ROOT_URLCONF = 'blaze_bite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],  # Add global template directories here if needed
-        'APP_DIRS': True,  # Ensures Django searches within app-specific template directories
+        'DIRS': [BASE_DIR / 'templates'],  # Ensure this points to the correct templates folder
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -160,3 +160,5 @@ DATABASES = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Redirect users to login page if they are not authenticated
+LOGIN_URL = '/login/'  # This should match the URL pattern for your login view

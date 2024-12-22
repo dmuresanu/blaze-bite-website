@@ -1,7 +1,6 @@
-# views.py
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from .forms import MenuItemForm, BookingForm
 from .models import MenuItem, Booking
 from django.contrib.auth.forms import UserChangeForm
@@ -57,7 +56,6 @@ def edit_profile(request):
 
 def menu(request):
     menu_items = MenuItem.objects.all()
-    print(menu_items)  # Debugging line
     return render(request, 'menu.html', {'menu_items': menu_items})
 
 def about(request):
@@ -68,16 +66,12 @@ def contact(request):
 
 def booking(request):
     if request.method == 'POST':
-        print("POST request received")  # Debug log
         form = BookingForm(request.POST)
         if form.is_valid():
-            print("Form is valid")  # Debug log
             booking = form.save()
-
             messages.success(request, 'Your booking has been successfully made!')
             return redirect('booking_success')  # Redirect to a booking success page
         else:
-            print("Form is invalid:", form.errors)  # Debug log
             messages.error(request, 'Please correct the errors below.')
     else:
         form = BookingForm()

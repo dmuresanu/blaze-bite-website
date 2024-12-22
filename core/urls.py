@@ -1,5 +1,6 @@
 # core/urls.py
 from django.urls import path
+from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
@@ -14,4 +15,6 @@ urlpatterns = [
     path('staff/edit-profile/', views.edit_profile, name='edit_profile'),  # Edit staff profile
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
+    path('login/', auth_views.LoginView.as_view(), name='login'),  # Login URL for unauthenticated users
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),  # Logout URL
 ]
