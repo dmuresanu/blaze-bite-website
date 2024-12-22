@@ -18,6 +18,10 @@
             document.querySelector("nav").classList.remove("scrolled");
         }
     }
+
+    function toggleMenu() {
+        document.querySelector('nav').classList.toggle('active');
+    }
 </script>
 
 <body>
@@ -39,6 +43,12 @@
             <a href="/" class="logo">
                 <img src="{% static 'images/logo.png' %}" alt="Restaurant Logo">
             </a>
+            <!-- Hamburger Menu for Mobile -->
+            <div class="navbar-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul>
                 <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
                 <li><a href="/menu/" class="{% if request.path == '/menu/' %}active{% endif %}">Menu</a></li>
