@@ -38,7 +38,7 @@ def delete_menu_item(request, item_id):
 @login_required
 def staff_profile(request):
     # Show the current user's profile details
-    return render(request, 'staff_profile.html')
+    return render(request, 'registration/staff_profile.html')
 
 @login_required
 def edit_profile(request):
