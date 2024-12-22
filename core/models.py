@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User  # For associating bookings with users (optional)
+from django.contrib.auth.models import User  
 
 # Create your models here.
 
@@ -24,3 +24,13 @@ class Booking(models.Model):
 
     def __str__(self):
         return f"Booking for {self.full_name} on {self.date} at {self.time}"        
+
+class StaffProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="staff_profile")
+    phone_number = models.CharField(max_length=20, blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
+    position = models.CharField(max_length=100, blank=True, null=True)
+    profile_picture = models.ImageField(upload_to='staff_profiles/', blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.position}"
