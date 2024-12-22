@@ -1,3 +1,4 @@
+# views.py
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
@@ -10,7 +11,6 @@ def index(request):
 
 @login_required
 def add_menu_item(request, item_id=None):
-    # If an item_id is provided, we fetch the existing MenuItem instance for editing
     if item_id:
         item = get_object_or_404(MenuItem, id=item_id)
         form = MenuItemForm(request.POST or None, request.FILES or None, instance=item)
@@ -20,24 +20,19 @@ def add_menu_item(request, item_id=None):
     if request.method == 'POST' and form.is_valid():
         form.save()
         messages.success(request, 'Menu item saved successfully!')
-        return redirect('menu')  # Redirect to the menu list page after saving
+        return redirect('menu')
 
     return render(request, 'add_menu_item.html', {'form': form, 'item_id': item_id})
 
 @login_required
 def delete_menu_item(request, item_id):
-    # Get the MenuItem object or 404 if not found
     item = get_object_or_404(MenuItem, id=item_id)
-    
-    # Delete the item and display a success message
     item.delete()
     messages.success(request, 'Menu item deleted successfully!')
-    
-    return redirect('menu')  # Redirect back to the menu page
+    return redirect('menu')
 
 @login_required
 def staff_profile(request):
-    # Show the current user's profile details
     return render(request, 'registration/staff_profile.html')
 
 @login_required
@@ -68,9 +63,9 @@ def booking(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
-            booking = form.save()
+            form.save()
             messages.success(request, 'Your booking has been successfully made!')
-            return redirect('booking_success')  # Redirect to a booking success page
+            return redirect('booking_success')
         else:
             messages.error(request, 'Please correct the errors below.')
     else:

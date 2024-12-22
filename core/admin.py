@@ -1,18 +1,15 @@
-from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from core.forms import StaffUserCreationForm  # Correct import path
-from django import forms
 from django.contrib import admin
-from .models import MenuItem
-from .models import StaffProfile
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin
+from .models import MenuItem, StaffProfile
+from .forms import StaffUserCreationForm  # Ensure this form handles password1 and password2
 
 # Unregister the default User admin to avoid the 'AlreadyRegistered' error
 admin.site.unregister(User)
 
 @admin.register(MenuItem)
 class MenuItemAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'description')  # Customize admin list view if needed
+    list_display = ('name', 'price', 'description')
     search_fields = ('name', 'description')  # Add search functionality to the admin
 
 class StaffProfileAdmin(admin.ModelAdmin):
@@ -23,38 +20,31 @@ class StaffProfileAdmin(admin.ModelAdmin):
 # Register StaffProfile with its admin
 admin.site.register(StaffProfile, StaffProfileAdmin)
 
-# Create a form for User with additional staff profile fields
-class StaffUserCreationForm(UserCreationForm):  # Inherit from UserCreationForm
-    class Meta:
-        model = User
-        fields = ('username', 'password1', 'password2', 'email', 'first_name', 'last_name')
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        if commit:
-            user.save()
-
-        # Create staff profile after saving user
-        StaffProfile.objects.create(user=user)
-
-        return user
-
 class StaffUserAdmin(UserAdmin):
+    # Use the custom form for creating users
     add_form = StaffUserCreationForm
     model = User
-    list_display = ('username', 'email', 'first_name', 'last_name')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active')
+    
+    # Define the fieldsets for editing existing users
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
         ('Personal info', {'fields': ('first_name', 'last_name', 'email')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
+        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}), 
+        ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
-
+    
+    # Define the fieldsets for adding new users
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'password1', 'password2', 'email', 'first_name', 'last_name'),
+            'fields': ('username', 'password1', 'password2', 'first_name', 'last_name', 'email', 'is_staff', 'is_active'),
         }),
     )
+    
+    # Define search functionality
+    search_fields = ('username', 'email')
+    ordering = ('username',)
 
 # Register custom User admin
 admin.site.register(User, StaffUserAdmin)

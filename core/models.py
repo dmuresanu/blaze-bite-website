@@ -1,7 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User  
-
-# Create your models here.
 
 class MenuItem(models.Model):
     name = models.CharField(max_length=100)
@@ -13,24 +10,23 @@ class MenuItem(models.Model):
         return self.name
 
 class Booking(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)  # Optional: Associate booking with a user
     full_name = models.CharField(max_length=200)
     email = models.EmailField()
     phone_number = models.CharField(max_length=15)
-    number_of_people = models.PositiveIntegerField()
+    number_of_people = models.IntegerField()
     date = models.DateField()
     time = models.TimeField()
-    special_requests = models.TextField(blank=True, null=True)  # Optional field for special requests
+    special_requests = models.CharField(max_length=255, blank=True, default="")  # Default value for special requests
 
     def __str__(self):
-        return f"Booking for {self.full_name} on {self.date} at {self.time}"        
+        return f"Booking for {self.full_name} on {self.date}"
 
 class StaffProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="staff_profile")
-    phone_number = models.CharField(max_length=20, blank=True, null=True)
-    address = models.TextField(blank=True, null=True)
-    position = models.CharField(max_length=100, blank=True, null=True)
-    profile_picture = models.ImageField(upload_to='staff_profiles/', blank=True, null=True)
+    user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
+    position = models.CharField(max_length=100, blank=False, default="Not Provided")  # Default to avoid NULL
+    phone_number = models.CharField(max_length=15, blank=False, default="Not Provided")  # Default phone number
+    address = models.CharField(max_length=255, blank=False, default="Not Provided")  # Default address
+    profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)  # Keep null=True for optional picture
 
     def __str__(self):
-        return f"{self.user.username} - {self.position}"
+        return f"Profile for {self.user.username}"
