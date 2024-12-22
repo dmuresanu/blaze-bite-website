@@ -1,6 +1,7 @@
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from core.forms import StaffUserCreationForm  # Correct import path
 from django import forms
 from django.contrib import admin
 from .models import MenuItem

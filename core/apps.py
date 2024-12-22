@@ -1,4 +1,5 @@
 from django.apps import AppConfig
+from .forms import StaffUserCreationForm
 
 
 class CoreConfig(AppConfig):
