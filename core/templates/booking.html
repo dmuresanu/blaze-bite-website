@@ -1,5 +1,3 @@
-<!-- core/templates/core/booking.html -->
-
 {% extends 'base.html' %}
 
 {% block title %}Book a Table - Restaurant{% endblock %}
@@ -36,4 +34,26 @@
       </div>
     {% endif %}
   </section>
+
+  <!-- Add Flatpickr CSS and JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <!-- Initialize Flatpickr for the date and time fields -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      flatpickr("#id_date", { 
+        dateFormat: "Y-m-d",  // Define the format for date
+        minDate: "today",     // Prevent past dates from being selected
+        disableMobile: true   // Disable mobile date picker to ensure uniformity
+      });
+
+      flatpickr("#id_time", { 
+        enableTime: true,      // Enable time selection
+        noCalendar: true,      // Disable calendar view (only time picker)
+        dateFormat: "H:i",     // Define the format for time (24-hour)
+        time_24hr: true        // Use 24-hour time format
+      });
+    });
+  </script>
 {% endblock %}

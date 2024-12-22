@@ -34,7 +34,7 @@ def booking(request):
         if form.is_valid():
             print("Form is valid")  # Debug log
             booking = form.save()
-            send_booking_confirmation_email(booking)
+
             messages.success(request, 'Your booking has been successfully made!')
             return redirect('booking_success')  # Redirect to a booking success page
         else:

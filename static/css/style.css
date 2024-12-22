@@ -294,6 +294,18 @@ footer a:hover {
     color: white; /* Make the heading and paragraph text white */
 }
 
+input.flatpickr-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input.flatpickr-input:focus {
+    border-color: #ff7f50;  /* Make border orange when focused */
+}
+
 /* Success Section Styling */
 .success-section {
     text-align: center;
