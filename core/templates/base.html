@@ -22,7 +22,8 @@
 
 <body>
 
-    <!-- Header Section with Hero Image -->
+    <!-- Header Section with Hero Image (Only shown on the homepage) -->
+    {% if request.path == '/' %}
     <header>
         <div class="hero-text">
             <h1>Welcome to Blaze Bite</h1>
@@ -30,6 +31,7 @@
             <a href="/menu/" class="cta-button">Explore Menu</a>
         </div>
     </header>
+    {% endif %}
 
     <!-- Navbar Section -->
     <nav>
@@ -47,16 +49,15 @@
         </div>
     </nav>
     
-
     <main>
         {% block content %}
         {% if messages %}
-    <div class="messages">
-        {% for message in messages %}
-            <div class="message {{ message.tags }}">{{ message }}</div>
-        {% endfor %}
-    </div>
-{% endif %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
         {% endblock %}
     </main>
 
