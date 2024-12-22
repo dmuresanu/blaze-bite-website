@@ -1,4 +1,5 @@
 from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib import admin
@@ -19,13 +20,13 @@ class StaffProfileAdmin(admin.ModelAdmin):
     list_filter = ('position',)
 
 # Register StaffProfile with its admin
-admin.site.register(StaffProfile, StaffProfileAdmin)    
+admin.site.register(StaffProfile, StaffProfileAdmin)
 
 # Create a form for User with additional staff profile fields
-class StaffUserCreationForm(forms.ModelForm):
+class StaffUserCreationForm(UserCreationForm):  # Inherit from UserCreationForm
     class Meta:
         model = User
-        fields = ('username', 'password', 'email', 'first_name', 'last_name')
+        fields = ('username', 'password1', 'password2', 'email', 'first_name', 'last_name')
 
     def save(self, commit=True):
         user = super().save(commit=False)
