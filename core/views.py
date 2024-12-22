@@ -18,6 +18,7 @@ def add_menu_item(request):
 
 def menu(request):
     menu_items = MenuItem.objects.all()
+    print(menu_items)  # Debugging line
     return render(request, 'menu.html', {'menu_items': menu_items})
 
 def about(request):
