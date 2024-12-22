@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #443c44;
+    background-color:  rgba(0, 0, 0, 0.8);
     overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
@@ -237,7 +237,7 @@ footer a:hover {
 /* Booking Section Styling */
 .booking-section {
     padding: 40px 20px;
-    background-color: #f4f4f4;
+    background-image: url("/static/images/booking-bg.jpg.jpg");
     text-align: center;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -252,8 +252,8 @@ footer a:hover {
 .booking-form {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
+    background-color:  rgba(0, 0, 0, 0.8);
+    padding: 80px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -280,6 +280,11 @@ footer a:hover {
 
 .booking-form button:hover {
     background-color: #e76f3c;
+}
+
+.booking-section h1,
+.booking-section p {
+    color: white; /* Make the heading and paragraph text white */
 }
 
 /* Success Section Styling */
