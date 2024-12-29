@@ -658,6 +658,18 @@ h3 {
 }
 
 /* Login Page Styling */
+.login-section {
+    background-image: url(/static/images/login-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .login-container {
     background-color: rgba(0, 0, 0, 0.8); /* Dark background to match theme */
     color: white;
