@@ -10,9 +10,14 @@ from .models import MenuItem, Booking
 def index(request):
     return render(request, 'index.html')
 
-# Apply login_required to protect the add_menu_item and edit_menu_item views
+# View for adding a menu item, restricted to staff members only
 @login_required
 def add_menu_item(request, item_id=None):
+    # Check if the user is staff, else redirect to a different page
+    if not request.user.is_staff:
+        messages.error(request, "You are not authorized to add menu items.")
+        return redirect('staff_profile')  # Redirect to profile or another page
+
     if item_id:
         item = get_object_or_404(MenuItem, id=item_id)
         form = MenuItemForm(request.POST or None, request.FILES or None, instance=item)

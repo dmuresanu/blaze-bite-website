@@ -21,6 +21,11 @@
                     <p><strong>Joined:</strong> {{ user.date_joined|date:"F j, Y" }}</p>
 
                     <a href="{% url 'edit_profile' %}" class="edit-profile-btn">Edit Profile</a>
+
+                    <!-- Only show this link if the user is a staff member -->
+                    {% if user.is_staff %}
+                        <a href="{% url 'add_menu_item' %}" class="btn btn-primary">Add Menu Item</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

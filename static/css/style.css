@@ -623,6 +623,18 @@ h3 {
     background-color: #e76f3c;
 }
 
+.btn-primary {
+    padding: 10px 20px;
+    background-color: #ff7f50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #e76f3c;
+}
+
 
 /* Login Page Styling */
 .login-section {
