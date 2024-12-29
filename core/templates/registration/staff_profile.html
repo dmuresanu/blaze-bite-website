@@ -21,24 +21,6 @@
                     <p><strong>Joined:</strong> {{ user.date_joined|date:"F j, Y" }}</p>
 
                     <a href="{% url 'edit_profile' %}" class="edit-profile-btn">Edit Profile</a>
-
-                    <!-- Only show this link if the user is a staff member -->
-                    {% if user.is_staff %}
-                        <a href="{% url 'add_menu_item' %}" class="btn btn-primary">Add Menu Item</a>
-                    {% endif %}
-
-                    <!-- Displaying Edit and Delete buttons for each menu item -->
-                    {% if user.is_staff %}
-                        <div class="menu-actions">
-                            {% for item in menu_items %}
-                                <div class="menu-item">
-                                    <p><strong>{{ item.name }}</strong></p>
-                                    <a href="{% url 'edit_menu_item' item.id %}" class="btn btn-secondary">Edit</a>
-                                    <a href="{% url 'delete_menu_item' item.id %}" class="btn btn-danger">Delete</a>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
                 </div>
             </div>
         </div>
