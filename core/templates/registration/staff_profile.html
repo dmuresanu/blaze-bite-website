@@ -1,15 +1,26 @@
-<!-- templates/staff_profile.html -->
 {% extends 'base.html' %}
 
-{% block title %}Staff Profile - Restaurant{% endblock %}
+{% load static %}
+
+{% block title %}Staff Profile - Blaze Bite Restaurant{% endblock %}
 
 {% block content %}
-    <h2>Staff Profile</h2>
+    <div class="staff-profile-container">
+        <h2 class="profile-title">Staff Profile</h2>
 
-    <p><strong>Username:</strong> {{ user.username }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
-    <p><strong>Full Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+        <div class="profile-details">
+            <div class="profile-image">
+                <img src="{% static 'images/default-profile.jpg' %}" alt="Staff Profile Picture" class="profile-picture">
+            </div>
+            <div class="profile-info">
+                <p><strong>Username:</strong> {{ user.username }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Full Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+                <p><strong>Role:</strong> {{ user.profile.role }}</p> <!-- Assuming you have a 'role' field in a profile model -->
+                <p><strong>Joined:</strong> {{ user.date_joined|date:"F j, Y" }}</p> <!-- Displaying formatted date joined -->
 
-    <a href="{% url 'edit_profile' %}">Edit Profile</a>
-
+                <a href="{% url 'edit_profile' %}" class="edit-profile-btn">Edit Profile</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
