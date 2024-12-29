@@ -736,3 +736,127 @@ h3 {
     background-color: #f8d7da;
     color: #721c24;
 }
+
+/* Staff Profile Page Styles */
+.staff-profile-container {
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background to match theme */
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 60px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-title {
+    text-align: center;
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.profile-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    color: white;
+}
+
+.profile-image {
+    flex: 1 1 250px;
+    text-align: center;
+}
+
+.profile-image img.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #ff7f50; /* Border color to match the theme */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.profile-info {
+    flex: 2 1 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.2em;
+}
+
+.profile-info p {
+    margin-bottom: 15px;
+}
+
+.profile-info strong {
+    color: #ff7f50; /* Accent color for labels */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: white;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background */
+    font-size: 1.1em;
+    color: #333;
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #ff7f50; /* Focus border color */
+    outline: none;
+}
+
+.save-profile-btn {
+    background-color: #ff7f50;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center;
+}
+
+.save-profile-btn:hover {
+    background-color: #e76f3c;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+    .staff-profile-container {
+        padding: 20px;
+    }
+
+    .profile-title {
+        font-size: 2em;
+    }
+
+    .profile-image img.profile-picture {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-info {
+        flex: 1 1 100%;
+    }
+
+    .profile-details {
+        flex-direction: column;
+    }
+}

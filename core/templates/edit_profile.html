@@ -1,15 +1,57 @@
-<!-- templates/edit_profile.html -->
 {% extends 'base.html' %}
 
-{% block title %}Edit Profile - Restaurant{% endblock %}
+{% load static %}
+
+{% block title %}Edit Profile - Blaze Bite Restaurant{% endblock %}
 
 {% block content %}
-    <h2>Edit Profile</h2>
+<div class="staff-profile-container">
+    <h2 class="profile-title">Edit Profile</h2>
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save Changes</button>
-    </form>
+    <div class="profile-details">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="profile-image">
+                <label for="profile_picture">Profile Picture:</label>
+                <img src="{% if user.staffprofile.profile_picture %}{{ user.staffprofile.profile_picture.url }}{% else %}{% static 'images/default-profile.png' %}{% endif %}" alt="Staff Profile Picture" class="profile-picture">
+                <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+            </div>
 
+            <div class="profile-info">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" value="{{ user.username }}" disabled class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ user.email }}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="full_name">Full Name:</label>
+                    <input type="text" id="full_name" name="full_name" value="{{ user.first_name }} {{ user.last_name }}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Role:</label>
+                    <input type="text" id="role" name="role" value="{{ user.staffprofile.position }}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone_number">Phone Number:</label>
+                    <input type="text" id="phone_number" name="phone_number" value="{{ user.staffprofile.phone_number }}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" value="{{ user.staffprofile.address }}" class="form-control">
+                </div>
+
+                <button type="submit" class="save-profile-btn">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
