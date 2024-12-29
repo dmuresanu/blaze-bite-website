@@ -161,4 +161,5 @@ DATABASES = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Redirect users to login page if they are not authenticated
-LOGIN_URL = '/login/'  # This should match the URL pattern for your login view
+LOGIN_URL = '/login/' 
+LOGIN_REDIRECT_URL = 'staff_profile'

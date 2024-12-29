@@ -1,14 +1,13 @@
-# views.py
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .forms import MenuItemForm, BookingForm
-from .models import MenuItem, Booking
-from django.contrib.auth.forms import UserChangeForm
+from .forms import MenuItemForm
+from .models import MenuItem
 
 def index(request):
     return render(request, 'index.html')
 
+# Apply login_required to protect the add_menu_item and edit_menu_item views
 @login_required
 def add_menu_item(request, item_id=None):
     if item_id:
@@ -24,6 +23,7 @@ def add_menu_item(request, item_id=None):
 
     return render(request, 'add_menu_item.html', {'form': form, 'item_id': item_id})
 
+# Protect delete_menu_item view with login_required as well
 @login_required
 def delete_menu_item(request, item_id):
     item = get_object_or_404(MenuItem, id=item_id)
@@ -31,6 +31,7 @@ def delete_menu_item(request, item_id):
     messages.success(request, 'Menu item deleted successfully!')
     return redirect('menu')
 
+# The staff_profile and edit_profile views are also protected by login_required
 @login_required
 def staff_profile(request):
     return render(request, 'registration/staff_profile.html')
@@ -49,6 +50,7 @@ def edit_profile(request):
 
     return render(request, 'edit_profile.html', {'form': form})
 
+# Menu items should be accessible without login
 def menu(request):
     menu_items = MenuItem.objects.all()
     return render(request, 'menu.html', {'menu_items': menu_items})
@@ -59,6 +61,7 @@ def about(request):
 def contact(request):
     return render(request, 'contact.html')
 
+# Booking pages should be accessible without login, as you don't require authentication for bookings
 def booking(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
