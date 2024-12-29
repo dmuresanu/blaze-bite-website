@@ -408,41 +408,32 @@ h3 {
     }
 }
 
-/* Contact Section */
+/* Styling for the Contact Page Section */
 .contact-section {
-    padding: 40px 20px;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark background to match theme */
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 40px 0;
+    position: relative;
+    background: url(/static/images/contact-bg.jpg) no-repeat center center;
+    background-size: cover;
+    padding: 100px 20px;
+    color: white;
 }
 
-.contact-section h2 {
+.contact-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.7); /* Transparent overlay for text readability */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-section h2, .contact-section h3 {
     font-size: 2.5em;
     margin-bottom: 20px;
-    color: white; /* Ensure heading is white */
 }
 
 .contact-section p {
     font-size: 1.2em;
-    color: white; /* Ensure text is readable */
     line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.contact-details {
-    background-color: rgba(255, 255, 255, 0.8); /* Light background for contact details */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
-}
-
-.contact-details h3 {
-    font-size: 2em;
-    margin-bottom: 15px;
-    color: #ff7f50; /* Matching accent color */
 }
 
 .contact-details ul {
@@ -451,33 +442,17 @@ h3 {
 }
 
 .contact-details ul li {
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin: 10px 0;
 }
 
 .contact-details a {
-    color: #ff7f50; /* Accent color for links */
+    color: #ff7f50;
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
 .contact-details a:hover {
-    color: #e76f3c; /* Darker shade of the accent color for hover effect */
-}
-
-/* Support Section */
-.support-section {
-    background-color: #fff;
-    padding: 40px 20px;
-    margin-top: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.support-section h3 {
-    font-size: 2.5em;
-    color: #ff7f50;
-    margin-bottom: 20px;
+    color: #e76f3c;
 }
 
 .support-section ul {
@@ -493,13 +468,12 @@ h3 {
 .support-section p {
     font-size: 1.2em;
     line-height: 1.6;
-    margin-bottom: 20px;
-    color: #333; /* Darker text for readability */
+    color: white;
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-    .contact-section h2 {
+    .contact-section h2, .contact-section h3 {
         font-size: 2em;
     }
 
@@ -509,15 +483,11 @@ h3 {
         font-size: 1em;
     }
 
-    .contact-details,
-    .support-section {
+    .contact-container {
         padding: 20px;
     }
-
-    .support-section h3 {
-        font-size: 2em;
-    }
 }
+
 
 /* Success Section Styling */
 .success-section {
