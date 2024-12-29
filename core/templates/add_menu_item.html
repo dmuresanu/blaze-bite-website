@@ -7,7 +7,8 @@
     <h1>Add a New Menu Item</h1>
     <p>Fill in the details below to add a delicious item to our menu.</p>
 
-    <form method="post" class="menu-item-form">
+    <!-- Updated form tag with enctype to handle file uploads -->
+    <form method="post" class="menu-item-form" enctype="multipart/form-data">
       {% csrf_token %}
       
       <div class="form-group">
