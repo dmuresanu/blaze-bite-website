@@ -9,6 +9,7 @@ body {
 
 /* Global header styling */
 header {
+    background-color: #000; /* fallback color */
     background-image: url("/static/images/hero.jpg");
     background-size: cover;
     background-position: center;

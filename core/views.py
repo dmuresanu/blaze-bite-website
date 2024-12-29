@@ -1,8 +1,11 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import login, logout
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
-from .forms import MenuItemForm
-from .models import MenuItem
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.forms import UserChangeForm
+from .forms import MenuItemForm, BookingForm
+from .models import MenuItem, Booking
 
 def index(request):
     return render(request, 'index.html')
@@ -78,3 +81,20 @@ def booking(request):
 
 def booking_success(request):
     return render(request, 'booking_success.html')
+
+
+# Login and logout views
+def user_login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('index')  # Redirect to homepage or any other page
+    else:
+        form = AuthenticationForm()
+    return render(request, 'registration/login.html', {'form': form})
+
+def user_logout(request):
+    logout(request)
+    return redirect('index')  # Redirect to homepage or login page after logout
