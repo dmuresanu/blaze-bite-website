@@ -180,6 +180,7 @@ body.homepage main {
 }
 
 /* Menu Section */
+
 .menu-items {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -194,16 +195,17 @@ body.homepage main {
 }
 
 .menu-item {
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
 .menu-item img {
     width: 100%;
-    height: auto;
+    height: 200px;
+    object-fit: cover;
     border-radius: 8px;
 }
 
@@ -211,10 +213,12 @@ body.homepage main {
 .menu-item h3 {
     font-size: 1.4em;
     margin: 15px 0;
+    color: #ccc;
 }
 
 .menu-item p {
     font-size: 1.1em;
+    color: #ccc;
 }
 
 .menu-item strong {
@@ -222,7 +226,10 @@ body.homepage main {
     color: #ff7f50;
 }
 
+
+
 /* Footer Styling */
+
 footer {
     background-color: #333;
     color: white;
@@ -243,6 +250,7 @@ footer a:hover {
 }
 
 /* Booking Section Styling */
+
 .booking-section {
     padding: 40px 20px;
     background-image: url("/static/images/booking-bg.jpg.jpg");
@@ -309,6 +317,7 @@ input.flatpickr-input:focus {
 
 
 /* About Us Section Styling */
+
 .about-us-section {
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
@@ -319,6 +328,7 @@ input.flatpickr-input:focus {
 }
 
 /* Mission, History, and Values Sections */
+
 .mission-statement, .history-section, .values-section {
     margin: 40px 0;
 }
@@ -329,6 +339,7 @@ h3 {
 }
 
 /* Values Section - List Style */
+
 .values-section ul {
     list-style-type: none;
     padding: 0;
@@ -341,6 +352,7 @@ h3 {
 }
 
 /* Meet the Team Section */
+
 .team-section {
     margin-top: 60px;
 }
@@ -370,6 +382,7 @@ h3 {
 }
 
 /* Restaurant Photos Section */
+
 .photos-section {
     margin-top: 60px;
 }
@@ -390,6 +403,7 @@ h3 {
 }
 
 /* Responsive Design for Mobile */
+
 @media (max-width: 768px) {
     .team-members {
         flex-direction: column;
