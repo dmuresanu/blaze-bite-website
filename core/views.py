@@ -58,6 +58,13 @@ def edit_profile(request):
 
     return render(request, 'edit_profile.html', {'form': form})
 
+@login_required
+def staff_profile(request):
+    # Retrieve the menu items
+    menu_items = MenuItem.objects.all()  # This can be filtered if necessary (e.g., only items created by the staff member)
+    
+    return render(request, 'registration/staff_profile.html', {'menu_items': menu_items})    
+
 # Menu items should be accessible without login
 def menu(request):
     menu_items = MenuItem.objects.all()
