@@ -9,7 +9,8 @@ admin.site.unregister(User)
 
 @admin.register(MenuItem)
 class MenuItemAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'description')
+    list_display = ('category','name', 'price', 'description')
+    list_filter = ('category',)
     search_fields = ('name', 'description')  # Add search functionality to the admin
 
 class StaffProfileAdmin(admin.ModelAdmin):

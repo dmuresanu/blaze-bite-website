@@ -5,15 +5,52 @@
 
 {% block content %}
     <h2 style="color: white; font-size: 2.5em; margin-bottom: 20px;">Our Menu</h2>
-    
-    <div class="menu-items">
-        {% for item in menu_items %}
-            <div class="menu-item">
-                <img src="{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default-image.jpg' %}{% endif %}" alt="{{ item.name }}">
-                <h3>{{ item.name }}</h3>
-                <p>{{ item.description }}</p>
-                <p><strong>${{ item.price }}</strong></p>
-            </div>
-        {% endfor %}
+
+    <div class="menu-category">
+        <h3>Starters</h3>
+        <div class="menu-items">
+            {% for item in menu_items %}
+                {% if item.category == 'Starters' %}
+                    <div class="menu-item">
+                        <img src="{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default-image.jpg' %}{% endif %}" alt="{{ item.name }}">
+                        <h3>{{ item.name }}</h3>
+                        <p>{{ item.description }}</p>
+                        <p><strong>${{ item.price }}</strong></p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="menu-category">
+        <h3>Main Courses</h3>
+        <div class="menu-items">
+            {% for item in menu_items %}
+                {% if item.category == 'Mains' %}
+                    <div class="menu-item">
+                        <img src="{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default-image.jpg' %}{% endif %}" alt="{{ item.name }}">
+                        <h3>{{ item.name }}</h3>
+                        <p>{{ item.description }}</p>
+                        <p><strong>${{ item.price }}</strong></p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="menu-category">
+        <h3>Desserts</h3>
+        <div class="menu-items">
+            {% for item in menu_items %}
+                {% if item.category == 'Desserts' %}
+                    <div class="menu-item">
+                        <img src="{% if item.image %}{{ item.image.url }}{% else %}{% static 'images/default-image.jpg' %}{% endif %}" alt="{{ item.name }}">
+                        <h3>{{ item.name }}</h3>
+                        <p>{{ item.description }}</p>
+                        <p><strong>${{ item.price }}</strong></p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

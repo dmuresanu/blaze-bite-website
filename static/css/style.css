@@ -226,6 +226,16 @@ body.homepage main {
     color: #ff7f50;
 }
 
+.menu-category {
+    margin-bottom: 40px;
+}
+
+.menu-category h3 {
+    font-size: 2em;
+    color: #ff7f50;
+    margin-bottom: 20px;
+    text-align: center;
+}
 
 
 /* Footer Styling */

@@ -8,7 +8,7 @@ import datetime
 class MenuItemForm(forms.ModelForm):
     class Meta:
         model = MenuItem
-        fields = ['name', 'description', 'price', 'image']
+        fields = ['category','name', 'description', 'price', 'image']
 
 class BookingForm(forms.ModelForm):
     class Meta:
