@@ -3,8 +3,13 @@
 ![am I responsive screenshot](static/images/readme_images/amiresponsive.png)
 
 ## A restaurant website.
-> A themed restaurant website showcasing the menu, venue and staff . The site also allows customers to reservation requests to the restaurant.
+> This website is a themed restaurant platform designed to showcase the restaurant’s menu, venue, and staff, providing an engaging user experience for potential customers. Key features of the site include:
 
+Menu: A detailed, visually appealing menu display, giving customers an easy way to browse available dishes.
+Staff: A profile page for staff members.
+Reservation System: Customers can easily request reservations online, enhancing convenience and engagement.
+
+The website is designed to provide users with a seamless, informative, and enjoyable experience, from exploring the menu to making a reservation.
 
 ### - By Doru Muresanu
 
@@ -18,17 +23,14 @@
   
 ## Table of contents
 <a name="contents">Back to Top</a>
- 1. [ UX ](#ux)
- 2. [Agile Development](#agile)
- 3. [ Features ](#features)  
- 4. [ Features Left to Implement ](#left)  
- 5. [ Technology used ](#tech) 
- 6. [ Testing ](#testing)  
- 7. [ Bugs ](#bugs)  
- 8. [ Deployment](#deployment)
- 9. [ Credits](#credits)
- 10. [ Content](#content)  
- 11. [ Acknowledgements](#acknowledgements)  
+ 1. [ UX ](#ux)  
+ 2. [ Technology used ](#tech) 
+ 3. [ Testing ](#testing)  
+ 4. [ Bugs ](#bugs)  
+ 5. [ Deployment](#deployment)
+ 6. [ Credits](#credits)
+ 7. [ Content](#content)  
+ 8. [ Acknowledgements](#acknowledgements)  
  
 
 ## UX
@@ -38,212 +40,78 @@
 
 > Database Structure
 
-![Lucid Diagram](static/images/readme_images/erd-lucidchart.png)
+![Diagram](static/images/readme_images/django_project_diagram.png)
 
 - When I decided on my initial concept of Blaze Bite I knew I needed to understand what type of data I would need to store and the relationships between them.
-- I created the above diagram on lucidchart to help guide me.
+- I created the above diagramto help guide me.
 - As explained below I have decided to ommit some feature until a further release / iteration.
 
-
 ### Database Schema
-#### Customer Model
+#### MenuItem Model
 
-| id | Field |
+| id | BigAutoField |
 |--|--|
-| User |OneToOneField  |
-| first_name |Charfield|
-|last_name|Charfield|
-|email|EmailField|
-|contact_phone|Charfield|
-|profile_image|CloudinaryField|
+| category |CharField  |
+| description |TextField|
+|image|ImageField|
+|name|CharField|
+|price|DecimalField|
 
 ---
 
 #### Booking Model
 
-| id | Field |
+| id | BigAutoField |
 |--|--|
-| first_name |Charfield|
-|last_name|Charfield|
+| date |DateField|
 |email|EmailField|
-|contact_phone|Charfield|
-|booking_date|DateField|
-|booking_time|Charfield|
-|number_of_attendees|Integerfield|
-|booking_status|IntegerField|
-|customer|FK|
-
----
-
-#### Event Model
-
-| id | Field |
-|--|--|
-| title |CharField|
-|slug|SlugField|
-|date|DateField|
+|full_name|CharField|
+|number_of_people|Integerfield|
+|phone_number|CharField|
+|special_requests|CharField|
 |time|TimeField|
-|tickets_available|IntegerField|
-|featured_image|CloudinaryField|
-|description|TextField|
-|excerpt|TextField|
-|event_added|DateTimeField|
-|author|FK|
-|status|IntegerField|
 
 ---
 
-#### Menu Model
+#### StaffProfile Model
 
-| id | Field |
+| id | BigAutoField |
 |--|--|
-| name |CharField|
-|slug|SlugField|
-|image|CloudinaryField|
-|description|TextField|
-|set_menu|BooleanField|
-|price|IntegerField|
-|status|IntegerField|
-|event_added|DateTimeField|
+|user|OneToOneField (id)|
+|address|CharField|
+|department|CharField|
+|phone_number|CharField|
+|position|CharField|
+|profile_picture|ImageField|
 
 ---
-
-#### Starter Model
-
-| id | Field |
-|--|--|
-| title |CharField|
-|description|TextField|
-|price|Integerfield|
-|menu|FK|
-
----
-
-#### MainDish Model
-
-| id | Field |
-|--|--|
-| title |CharField|
-|description|TextField|
-|price|Integerfield|
-|menu|FK|
-
----
-
-#### Desserts Model
-
-| id | Field |
-|--|--|
-| title |CharField|
-|description|TextField|
-|price|Integerfield|
-|menu|FK|
-
 
 # UX design
 
 ## Overview
 
-Blaze Bite is a Fictional restaurant I decided to come up with and design a website for.  
-The main goal of the website is to allow users to view some photos of the venue, see what they have to offer, view the menu and if it is to their liking then the user can book a table.
+Blaze Bite is a fictional restaurant that I created for my project. The primary objective of the website is to provide users with a glimpse of the venue through photos, showcase the restaurant’s offerings, and present the menu. If users find something they like, they can easily book a table. Additionally, the website allows restaurant staff to log in and manage the menu by adding, editing, or removing menu items as needed.
 
 ### Design
-Once the name was chosen I decided that I wanted this website to be modern, minimalistic in it's appearance.e.
+Once the name was chosen, I decided to design the website with a modern, minimalist aesthetic to create a clean and sleek appearance. The goal was to prioritize simplicity and ease of navigation while still offering a visually appealing user experience.
 
 ### Site User
 
- - Someone within the same city as the restaurant looking for new places to visit
+ - Individuals looking to explore the restaurant, view the menu, check out photos of the venue, and make reservations.
  - Someone who would prefer to make bookings digitally rather than speaking with others
+ - People who are curious about the restaurant or looking for a place to dine in a new area.
+ - Employees who manage the website and update content, such as adding or editing menu items.
 
 ###  Goals for the website
 
- - To allow customers to see their menus ahead of time
- - To allow customers to make bookings through the website 
-
-## Wireframes
-
-###  Wireframes
-
-> index.html
-
-
-![Index page](static/images/readme_images/wireframe-index-page.png)
-
-My goal for this project was to create a simple sleek website that allowed the restaurant to showcase it's venue & menu but also to provide more info about their story. 
-
-
-## Agile Development
-
-<a name="agile"></a>
-
-### Agile Overview
-
-This project was started alongside a GitHub Projects Page to track and manage the expected workload ahead.
-The aim was to set out my expected workload, list the epics and then break them down into user stories or bite sized tasks to work towards and ultimately finish the site in good time.
-
-
-At the initial stages I decided on 7 core requirements for the project and 3 Nice to haves but not important. (**NINTH**).
-
-From these I added the user stories, acceptance criteria and the tasks so I can track my work effectively.
-
-
-#### User stories
-
-#####  Completed User Stories
-
-To view any of the expanded details of the user stories please click on a user story below to be taken to the Kanban project.
-If the specific user story does not auto pop up then please click on it from the project page and you will see the details and comments.
-
- 1. [USER STORY: Deploy Website](https://github.com/Alan-Bushell/la-cocina-del-diablo/issues/1)
- 2. [USER STORY: Admin Panel#2](https://github.com/Alan-Bushell/la-cocina-del-diablo/issues/2)
- 3. [USER STORY: Create an account (CRUD)#3](https://github.com/Alan-Bushell/la-cocina-del-diablo/issues/3)
- 4. [USER STORY: Base Template#4](https://github.com/Alan-Bushell/la-cocina-del-diablo/issues/4)
- 5. [USER STORY: Make a Reservation#5](https://github.com/Alan-Bushell/la-cocina-del-diablo/issues/5)
- 6. [USER STORY: Add or Edit Menu Items#7](https://github.com/Alan-Bushell/la-cocina-del-diablo/issues/7)
- 7. [USER STORY: Edit Profile (CRUD)#8](https://github.com/Alan-Bushell/la-cocina-del-diablo/issues/8)
- 8. [USER STORY: Delete Profile (CRUD)#9](https://github.com/Alan-Bushell/la-cocina-del-diablo/issues/9)
- 9. [USER STORY: Testing#10](https://github.com/Alan-Bushell/la-cocina-del-diablo/issues/10)
-
-The following User stories were not completed as they were deemed to be not necessary for this project at this time but are indications of possible future features:
-
- ##### NINTH User stories
- 
- 1. [USER STORY: Events#6](https://github.com/Alan-Bushell/la-cocina-del-diablo/issues/6)
- 2. [USER STORY: Social Sharing#11](https://github.com/Alan-Bushell/la-cocina-del-diablo/issues/11)
- 3. [USER STORY: Social Feed#12](https://github.com/Alan-Bushell/la-cocina-del-diablo/issues/12)
-
-While USER STORY: Events#6 has some parts completed in terms of displaying upcoming events for the business, I decided against implementing a ticketing system at this time due to upcoming submission deadlines and because the core requirements of the project have been satisfied elsewhere.
-
-[Back to Top of page](#contents)
-
----
+ - Offer a seamless user experience with simple, intuitive navigation for both potential customers and restaurant staff. The website should be easy to navigate on all devices
+ - Highlight the restaurant's ambiance and dining experience with high-quality images of the venue and dishes. Present the menu in a visually appealing and easy-to-read format to entice customers.
+ - Provide a simple and straightforward booking system that lets users easily reserve a table online. This should be easy to access and quick to use, improving the overall customer experience.
+ - Allow restaurant staff to log in securely and manage the menu by adding, updating, or removing items. 
 
 ## Features
 
 <a name="features"></a>
-
-#### User based Features Implemented:
-
- - **Users can** create an account (**Create**)
- - **Users can** log into their account
- - **Users can** log out of their account
- - **Users can** make a booking through the reservation form **(Create)**
- - **Users can** access their profile page & view their information and/or bookings **(Read)**
- - **Users can** add their name, contact number and e-mail to their profile (**Create**)
- - **Users can** view their bookings from their profile page (**Read**)
- - **Users can** edit their username or any other information they have on their profile (**Update**)
- - **Users can** add their image or update an image if it is already set on their profile(**Update**)
- - **Users can** edit their booking if it has not yet been accepted or declined (**Update**)
- - **Users can** delete bookings at any stage of the process from their profile page (**Delete**)
- - **Users can** delete their account from the profile page by clicking on delete account (**Delete**)
-
-#### Account restrictions:
- - **Users cannot** access the profile section of an account without being logged in
- - **Users cannot** access the reservation form until they sign up or login
- - **Users cannot** edit a reservation once it has been accepted or declined
- - **Users cannot** edit their account number as this is their UserID and a primary key
- - **Users cannot** see other users bookings
- - **Users cannot** access the admin panel of the website unless they have admin status
 
 #### Website features:
 
@@ -256,15 +124,14 @@ While USER STORY: Events#6 has some parts completed in terms of displaying upcom
 
  -A user can book a table with the business.
  
-### index.html
-
 #### Desktop
 
 > Desktop Navigation
 
-![Desktop Navigation](static/images/readme_images/desktopnavigation.jpg)
+![Desktop Navigation](static/images/readme_images/Navigation-logged-in.png)
+![Desktop Navigation](static/images/readme_images/Navigation-logged-out.png)
 
- - The desktop navigation consists of a Home, Manu, About, Contact and Book a Table link. 
+ - The desktop navigation includes links to Home, Menu, About, Contact, Book a Table, and Staff Login when the user is not logged in. Once logged in, the navigation updates to include a Profile link.
  
 
 ---
@@ -273,101 +140,69 @@ While USER STORY: Events#6 has some parts completed in terms of displaying upcom
 
 ![Menu](static/images/readme_images/menu.png)
 
-- The menu section consists of 7 dishes. 
+- The menu section consists of Starters, Main Courses and Deserts. 
 - A customer can see the details of each dish and the price.
 
 ---
 
 > About
 
-![About](static/images/readme_images/upcomingeventscards.png)
+![About](static/images/readme_images/about.png)
 
-- Upcoming events is a way for the business to show themed nights / gigs or holiday events.
-- In the future customers will be able to book tickets directly through the events page.
+- Customers can meet the restaurant team and find more about the restaurant
+
   
 ---
 
-> Restaurant Booking Details
+> Contact
 
-![Restaurant booking details](static/images/readme_images/bookingnotice.png)
+![Contact Us](static/images/readme_images/contact.png)
+![Contact Us Form](static/images/readme_images/contact-form.png)
 
-- I decided that I wanted to have almost a restaurant booking terms so that on the reservation page it is just the form.
-
----
-
-> Footer
-
-![Footer](static/images/readme_images/footer.png)
-
-- The footer was designed to provide information and also functionality to the website.
-- It includes base navigation but also provides contact information & opening times.
+- On the Contact page users can find the location, opening hours but also the 
+ contact form.
 
 ---
 
-> Reservation form
+> Book a Table
 
-![Reservation form](static/images/readme_images/bookingform.png)
+![Restaurant booking form](static/images/readme_images/booking-form.png)
 
-- The reservation form contains the fields needed for a typical restaurant booking
-- It is displayed over a nice paralax image.
+- On the Book a Table page it is just the form.
+
+---
+
+> Staff Login
+
+![Staff Login](static/images/readme_images/staff-login.png)
+
+- On the Staff Login page, staff members can log in to their accounts.
 
 ---
 
 > Mobile Navigation
 
-![Mobile Navigation](static/images/readme_images/mobilenavigation.png)
+![Mobile Navigation](static/images/readme_images/mobile.png
+)
 
-- I used bootstrap to ensure my site was rendered at the best quality possible on mobile devices.
-
----
-
-> User profile
-
-![User Profile](static/images/readme_images/userprofileinfo.png)
-
-- The user profile section displays the image for the user along with the personal details.
-- The user can amend all personal informayion except account number. This is actually the userID primary key. 
-- I have added 100 to the userID and keep it as an account number if a user needed to query their account.
+- I utilized Bootstrap to ensure that my site is optimally displayed on mobile devices, providing the best possible user experience.
 
 ---
 
-> User bookings section
+> Staff Profile
 
-![User Bookings](static/images/readme_images/profilebookingssection.png)
+![Staff Profile](static/images/readme_images/Staff-Profile.png)
 
-- The user booking section will show all bookings that have not been deleted.
-- I incorporated a traffic light system for the status that changes depending on the outcome.
-- When a customer submits a request the booking is in **awaiting confirmation** status.
-- The business owner then views the bookings and information on the backend. 
-- If they can accomodate the customer they move the status to confirmed, if they do not they move the booking to declined.
-- This information is then relayed to the customer through the bookings in their profile.
+- The staff profile section displays the image for the user along with the personal details.
+- The user can amend all personal information.
 
 ---
 
-> User profile on mobile
+> Staff Profile on mobile
 
-![User Mobile](static/images/readme_images/mobileuserprofile.png)
+![Staff Profile Mobile](static/images/readme_images/Staff-profile-mobile.png)
 
-- User profile on mobile stacks in a column on mobile.
-
-[Back to Top of page](#contents)
-
----
-
-<a name="left"></a>
-## Features left to Implement 
-
-
- - Add ability for customers to purchase / book tickets for events on their account get a copy by email and to the profile booking section of their account.
- - Add e-mail notification for any changes to bookings made through the site. For example when a booking request has gone from pending to approved the user gets an email notification to advise them of this change.
- - Allow users to comment on events or share on social directly.
- - Allow users to sign up with social media
- - Add a specials section to the menu for the business to highlight the current specials easily.
- - Originally I had the user image replace the profile icon on the navbar and would like to change that back in the next iteration. 
- - Add a contact form with auto e-mail responses from the site.
- - Incorporate a QR code generator for the events that once a ticket is issued a corresponding QR code is sent in an e-mail with the details of the booking. This would allow the business to scan the QR code to validate the ticket.
- - Add an online ordering platform for users to want to order takeaway. Menu with a shopping cart and payment checkout.
- - I originally planned to add a Boolean field for newsletter to the customer model but due to time constraints I decided against this at this time. In the future I would add this in to get consent from customers to build a mailing list for the business.
+- Staff profile on mobile stacks in a column on mobile.
 
 [Back to Top of page](#contents)
 
@@ -378,48 +213,43 @@ While USER STORY: Events#6 has some parts completed in terms of displaying upcom
 
 ### Html
 
- - Used to structure my webpages and the base templating language
+ - Used to organize the layout of my webpages and as the foundation for the templating language.
 
 ### CSS
 
- - Custom CSS was written on large chunks of this site to make it as close to the wireframes as I felt it needed to be.
-
-### JavaScript
-
- -  Used to add timeout function for messages as well as to enable the menu on index.html
+ - CSS was utilized in this project to enhance the visual design, ensuring the site was both aesthetically pleasing and functional across different devices and screen sizes.
 
 ### Python
 
- -  Used for the logic in this project.
+ -  Used in this project to handle the backend functionality, enabling dynamic content management, user authentication, and seamless form submissions, ensuring a smooth and interactive user experience.
 
 ### Django
 
- -  Framework used to build this project. Provides a ready installed admin panel and includes many helper template tags that make writing code quick and efficient.
+ -  Django was used in this project as the web framework to efficiently manage the site's backend, handling URL routing, database models, form processing, and user authentication, allowing for rapid development and a scalable architecture.
 
-### Font Awesome
+### Bootstrap 
+ - Bootstrap was utilized in this project to streamline the development of a responsive and visually appealing layout, ensuring the website adapts seamlessly across different devices and screen sizes with its pre-built grid system and UI components.
 
- -  Icon library used for the profile and admin panel section.
+### Mailtrap 
+ - I used Mailtrap with my project to test and debug email functionality in a safe, isolated environment without sending actual emails, ensuring reliable email delivery and correct formatting
 
-### Bootstrap 5
- - Used as the base front end framework to work alongside Django
-
-### Jinja Templating with Django
- - Used to render logic within html documents and make the website more dynamic.
+ ### Flatpickr with Django
+ - I used Flatpickr in my project to provide a user-friendly, customizable date and time picker, enhancing the booking experience by allowing users to easily select reservation dates and times while preventing the selection of past dates.
 
 ### GitHub
- - Used to store the code for this project & for the projects Kanban board used to complete it.
+ - Used for version control and collaboration throughout the project, allowing me to track changes, manage code revisions, and ensure seamless coordination with team members while maintaining an organized repository of the website's development.
 
 ### Heroku
-- Used to host and deploy this project
+- Used to deploy the website, providing a reliable and scalable platform to host the application. It allowed for easy integration with the backend, seamless updates, and ensured the site was accessible to users worldwide.
 
 ### Heroku PostgreSQL
 -Heroku PostgreSQL was used as the database for this project during development and in production.
 
 ### Cloudinary
-- Used to host the static files for this project including user profile images.
+- Was utilized to manage and optimize media files such as images on the website. It provided a fast and efficient way to store, deliver, and transform images, ensuring quick load times and a seamless user experience.
 
 ### Git
-- Used for version control throughout the project and to ensure a good clean record of work done was maintained.
+- Used for version control throughout the development process, allowing me to track changes, collaborate effectively, and maintain a history of the project's progress. It ensured that the codebase remained organized and enabled efficient management of updates and bug fixes
 
 [Back to Top of page](#contents)
 
@@ -428,127 +258,46 @@ While USER STORY: Events#6 has some parts completed in terms of displaying upcom
 <a name="testing"></a>
 ## Testing
 
-
-### Testing Phase
-
-#### Manual Testing
-
-> Each user story was manually tested in line with intended functionality on both desktop & mobile.
-> As this project was driven by my own User Stories I  felt manual testing was applicable on all logic code.
-
-
->If the intended outcome completes then this will be flagged as pass. If it does not then this is a fail.
-
-
-#### Account Registration Tests
-| Test |Result  |
-|--|--|
-| User can create account | Pass |
-| User can log into account| Pass|
-|User can log out of account|Pass|
-
----
-
-#### User Navigation Tests
-
-| Test |Result  |
-|--|--|
-|User can navigate to Reservations | Pass |
-|User can access menu items| Pass|
-|User access account profile page|Pass|
-|User can access events items|Pass|
-|SuperUser can access admin panel|Pass|
-
----
-
-#### Account Security Tests
-
-| Test |Result  |
-|--|--|
-|Non logged in user cannot make reservation | Pass |
-|Non logged in user cannot access profile page| Pass|
-|Non superuser cannot access admin panel|Pass|
-
----
-
-#### Booking Tests
-
-| Test |Result  |
-|--|--|
-|User can make a booking when all fields complete | Pass |
-|User tries to submit booking with empty form |Fail|
-|User tries to submit form without email address| Fail|
-|User can view their made bookings from profile|Pass|
-|User can edit booking while status is awaiting confirmation |Pass|
-|User can cancel booking while status is awaiting confirmation|Pass|
-|Edit button does not present on confirmed bookings|Pass|
-|Edit button does not present on declined bookings |Pass|
-|User can delete a pending booking|Pass|
-|User can delete a confirmed booking|Pass|
-|User can delete a declined booking|Pass|
-
---- 
-
-#### Profile Tests
-
-| Test |Result  |
-|--|--|
-|User can edit their user name from the profile page | Pass |
-|User can edit / add a profile image from the profile page |Pass|
-|User can edit / add a phone number to their account| Pass|
-|User can edit their first and last name |Pass|
-|User cannot edit their account number |Pass|
-|User can add / edit their email address|Pass|
-|User cannot change username to the same as another user|Pass|
-|User cannot change their email to the same as another user |Pass|
-|User presented with pop up modal when they click delete|Pass|
-|User presented with correct start date on profile|Pass|
-|User can delete a declined booking|Pass|
-|User can delete account |Pass|
-
-
-#### Admin Tests
-
-| Test |Result  |
-|--|--|
-|Admin can add items to starters|Pass|
-|Admin can add items to mains|Pass|
-|Admin can add items to desserts|Pass|
-|Admin can edit items in starters|Pass|
-|Admin can edit items in mains|Pass|
-|Admin can edit items in desserts|Pass|
-|Admin can delete items in starters|Pass|
-|Admin can delete items in mains|Pass|
-|Admin can delete items in desserts|Pass|
-|Items they display correctly on front-end when updated / added|Pass|
-
----
-
 ## Google Lighthouse Testing
 
 ### Desktop
 
 > index.html
 
+![Google Lighthouse Index](static/images/readme_images/Lighthouse-home.png)
 
-![Google Lighthouse Index](static/images/readme_images/lighthouseIndex.png)
+> menu.html
 
-> profile.html
+![Google Lighthouse Profile](static/images/readme_images/Lighthouse-Menu.png)
 
+> about.html
 
-![Google Lighthouse Profile](static/images/readme_images/lighthouseProfiles.png)
+![Google Lighthouse Profile](static/images/readme_images/Lighthouse-About.png)
 
+> contact.html
+
+![Google Lighthouse Profile](static/images/readme_images/Lighthouse-Contact.png)
+
+> booking.html
+
+![Google Lighthouse Profile](static/images/readme_images/Lighthouse-Book%20A%20Table.png)
+
+> login.html
+
+![Google Lighthouse Profile](static/images/readme_images/Lighthouse-Staff%20Login.png)
+
+> staff_profile.html
+
+![Google Lighthouse Profile](static/images/readme_images/Lighthouse-Profile.png)
 
 ## HTML W3 Validation
 
 ### index.html
 
-
 ![W3 Validation checker](static/images/readme_images/w3validation.png)
 #### Result: No Errors
 
 ### CSS Validation
-
 
 ![w3 Jigsaw CSS checker](static/images/readme_images/cssvalidation.png)
 #### Result: Pass - No Errors
@@ -561,26 +310,11 @@ While USER STORY: Events#6 has some parts completed in terms of displaying upcom
 ## **Bugs**
 
 #### Django templating bug
-![W3 Validation checker](static/images/readme_images/w3validationerrorshtml.png)
+![W3 Validation checker](static/images/readme_images/W3Error.png)
 
-- When I ran my code through the w3 html validator I got over 40 errors that I did not expect.
-- Upon review I could see Django was submitting fresh <p> Tags around my templated content for menu descriptions.
-- I removed the existing <p> Tags from my HTML code and this issue was cleared.
-  
-#### Bookings not displaying
-  
-- When implementing the booking system to user profiles I linked the templates temporarily to the user-email.
-- When a user tried to book under another email address that did not match the one on their account the bookings basically dissapeared.
-- To fix this issue and also because I want users to be able to update their email I extended the user model with a customer model and linked each booking to userid.
-- This way the customer will always have their own bookings.
-
-
-#### Image not loading once deployed
-
-- Once I deployed the project to heroku and finished development, only one of the images in cloudinary did not load.
-- I was being presented with a 404 even though the file was in cloudinary and the file path was correct.
-- As a work around Scott (tutor from CI) advised to copy the direct URL to the image rather than relying on the Cloudinary api to render the image.
-- Once I reloaded the static and pushed to github, my heroku app reloaded and was deployed and working.
+- When I ran my code through the W3 HTML Validator, I got this error: 'Element <a> not allowed as child of element <ul> in this context.' 
+- This error occurred because the <a> tag was placed directly inside the <ul> without being properly nested within a <li>. 
+- To fix this, I moved the <a> tag outside of the <ul> element and placed it above it, ensuring the code complies with HTML standards and maintains proper semantic structure.
 
 [Back to Top of page](#contents)
 
@@ -632,26 +366,6 @@ To deploy the project through Heroku I followed these steps:
 -   In Heroku, navigate to the deployment tab and deploy the branch manually - watch the build logs for any errors.
 -   Heroku will now build the app for you. Once it has completed the build process you will see a 'Your App Was Successfully Deployed' message and a link to the app to visit the live site.
 
-#### Forking the repository
-
-By forking the GitHub Repository you can make a copy of the original repository to view or change without it effecting the original repository.
-You can do this by: 
--  Logging into GitHub or create an account. 
-- Locate the repository at  [here](https://github.com/Alan-Bushell/la-cocina-del-diablo)  . 
--  At the top of the repository, on the right side of the page, select "Fork" from the buttons available. 
--  A copy of the repository should now be created in your own repository.
-
-#### [](https://github.com/Alan-Bushell/la-cocina-del-diablo)Create a clone of this repository
-
-Creating a clone enables you to make a copy of the repository at that point in time - this lets you run a copy of the project locally: This can be done by:
-
--   Navigate to  [https://github.com/Alan-Bushell/la-cocina-del-diablo](https://github.com/Alan-Bushell/la-cocina-del-diablo)
--   click on the arrow on the green code button at the top of the list of files
--   select the clone by https option and copy the URL it provides to the clipboard
--   navigate to your code editor of choice and within the terminal change the directory to the location you want to clone the repository to.
--   type 'git clone' and paste the https link you copied from github
--   press enter and git will clone the repository to your local machine
-
 [Back to Top of page](#contents)
 
 ---
@@ -659,35 +373,13 @@ Creating a clone enables you to make a copy of the repository at that point in t
 <a name="credits"></a>
 ## Credits
   
-##### Dennis ivy
-  - I watched some of Dennis's videos on youtube around django signals and extending the user model.
-  - This inspired me to take this action however I followed on from the django documentation
-  
-  
-##### Md bootstrap
-  - I went through the bootstrap navigation information and footer information to determine how best to approach my desired design.
-  - I always find Md Bootstrap helpful with examples of how best to implement boostrap components.
-  
-  
-##### Pexels
-  - I samples some images from pexels to help fill out the color of this project.
-  Here is a list of images used:
-  
-  Pexels images:
+##### Corey Schafer
+  - I referred to Corey Schafer's YouTube tutorials, particularly his videos on Django signals and extending the user model.
+  - His clear and practical explanations provided a solid foundation and deepened my understanding of these advanced concepts.
+  - While I used his tutorials as an initial guide, I also followed up with the official Django documentation to tailor the implementation to the specific needs of my project.
 
-- Wine pic: https://www.pexels.com/photo/clear-footed-glass-beside-bowl-370984/
-
-- table food pic: https://www.pexels.com/photo/photo-of-sliced-cheese-on-wooden-surface-4087609/
-
-- dark kitchen pic: https://www.pexels.com/search/restaurant%20flames/?orientation=landscape
-
-- bar  https://www.pexels.com/photo/person-sitting-near-bottles-1554654/
-
-- venue - https://www.pexels.com/photo/group-of-people-in-a-concert-during-night-time-5152546/
-
-- event image - https://www.pexels.com/photo/music-band-performs-on-stage-during-nighttime-736355/
-  
-  > All images sourced from Pexels and any credit is owed to the owners of the photos who have very kindly shared them for free usage.
+##### Pixbay
+  - All images used in this project were sourced from Pixabay. Credit and gratitude are owed to the talented photographers and creators who generously shared their work for free public use.
   
 
 [Back to Top of page](#contents)
@@ -698,16 +390,16 @@ Creating a clone enables you to make a copy of the repository at that point in t
 ## Content & Resources
   
 ##### Django Documentation
-  - Read through the django documentation multiple times when trying to implement models and other content.
+  - Referred to the Django documentation extensively, particularly when implementing models and other core features. It provided invaluable guidance and clarity.
   
 ##### W3 Schools
-  - Used for reference throughout for simple css examples.
+  - Used as a quick reference for CSS examples and best practices.
   
 ##### Code Institute
-  - Course content for portfolio project 4 helped greatly in being able to complete this project.
-  - I found the walkthroughs informative and well paced.
-  - Initial structure based heavily on the CI walkthrough until I got more comfortable with the framework and started to make it my own.
-  - Some legacy code regarding nav remains.
+  - The course content for Portfolio Project 4 was instrumental in the successful completion of this project.
+  - The walkthroughs were clear, well-paced, and provided a solid foundation for understanding Django and web development concepts.
+  - The initial project structure was heavily influenced by the CI walkthrough until I gained confidence with the framework and customized it to suit my vision.
+  - Some remnants of legacy code, particularly regarding the navigation bar, remain from the original walkthrough.
 
 [Back to Top of page](#contents)
 
@@ -716,8 +408,6 @@ Creating a clone enables you to make a copy of the repository at that point in t
 <a name="acknowlegements"></a>
 ## Acknowledgements
 
-### Dick Vlandeeren
-> My mentor who provided me with constructive feedback  and guidance throughout.
-  
 ### The tutors at Code institute
-> To all the tutors in CI, thank you for your patience. Special shout outs to Ger, John, Sean, Oisin & Scott.
+> To all the tutors in CI, thank you for your patience. 
+
