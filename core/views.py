@@ -121,11 +121,43 @@ def booking(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Your booking has been successfully made!')
-            return redirect('booking_success')
+            # Save the booking data
+            booking = form.save()
+
+            # Get the user's email and booking details
+            user_email = form.cleaned_data['email']
+            booking_details = f"Booking details:\n\nName: {form.cleaned_data['name']}\nEmail: {user_email}\nDate: {form.cleaned_data['date']}\nTime: {form.cleaned_data['time']}\nNumber of people: {form.cleaned_data['number_of_people']}"
+
+            try:
+                # Send email to the restaurant with the booking details
+                send_mail(
+                    'New Booking Confirmation',
+                    booking_details,
+                    user_email,  # Sender is the user
+                    ['restaurant@example.com'],  # Recipient is the restaurant
+                    fail_silently=False,
+                )
+
+                # Send confirmation email to the user
+                send_mail(
+                    'Booking Confirmation',
+                    f'Thank you for your booking!\n\n{booking_details}\n\nWe will confirm your reservation soon.',
+                    'no-reply@example.com',  # This is the sender email (no-reply)
+                    [user_email],  # Recipient is the user
+                    fail_silently=False,
+                )
+
+                # Success message
+                messages.success(request, 'Your booking has been successfully made!')
+
+                # Redirect to the booking success page
+                return redirect('booking_success')
+
+            except Exception as e:
+                messages.error(request, f"An error occurred while sending the email: {e}")
         else:
             messages.error(request, 'Please correct the errors below.')
+
     else:
         form = BookingForm()
 
@@ -142,7 +174,7 @@ def user_login(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('index')  # Redirect to homepage or any other page
+            return redirect('index')  # Redirect to homepage or any other pag
     else:
         form = AuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})
