@@ -1,4 +1,7 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.utils import timezone
+from datetime import datetime, time
 
 # MenuItem Model
 class MenuItem(models.Model):
@@ -36,16 +39,32 @@ class Booking(models.Model):
     number_of_people = models.IntegerField()
     date = models.DateField()
     time = models.TimeField()
-    special_requests = models.CharField(max_length=255, blank=True, default="")  # Default value for special requests
+    special_requests = models.CharField(max_length=255, blank=True, default="")
 
     def __str__(self):
         return f"Booking for {self.full_name} on {self.date}"
 
-    def save(self, *args, **kwargs):
-        # Ensure that the phone number has a valid format (you could use regex or phone validation library here)
-        if len(self.phone_number) < 10:
-            raise ValueError("Phone number is too short.")
-        super(Booking, self).save(*args, **kwargs)
+    def clean(self):
+        # Ensure the time field is not None
+        if self.time is None:
+            raise ValidationError("Time cannot be empty.")
+        
+        # Combine date and time into a timezone-aware datetime object
+        try:
+            reservation_datetime = timezone.make_aware(datetime.combine(self.date, self.time), timezone.get_current_timezone())
+        except TypeError:
+            raise ValidationError("The reservation time cannot be empty.")
+        
+        # Get current datetime as timezone-aware
+        current_time = timezone.now()
+
+        # Debug: Check reservation datetime and current time
+        print(f"Reservation datetime: {reservation_datetime}")
+        print(f"Current time: {current_time}")
+
+        # Check if the reservation time is in the past
+        if reservation_datetime < current_time:
+            raise ValidationError("The reservation time cannot be in the past.")
 
 
 # StaffProfile Model

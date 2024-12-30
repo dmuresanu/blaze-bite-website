@@ -124,9 +124,10 @@ def booking(request):
             # Save the booking data
             booking = form.save()
 
-            # Get the user's email and booking details
-            user_email = form.cleaned_data['email']
-            booking_details = f"Booking details:\n\nName: {form.cleaned_data['name']}\nEmail: {user_email}\nDate: {form.cleaned_data['date']}\nTime: {form.cleaned_data['time']}\nNumber of people: {form.cleaned_data['number_of_people']}"
+            # Get the cleaned data safely using .get() to prevent KeyError
+            user_email = form.cleaned_data.get('email')
+            name = form.cleaned_data.get('name', 'N/A')  # Default value to avoid KeyError
+            booking_details = f"Booking details:\n\nName: {name}\nEmail: {user_email}\nDate: {form.cleaned_data['date']}\nTime: {form.cleaned_data['time']}\nNumber of people: {form.cleaned_data['number_of_people']}"
 
             try:
                 # Send email to the restaurant with the booking details
