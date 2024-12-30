@@ -10,7 +10,5 @@ os.environ.setdefault(
     "CLOUDINARY_URL","cloudinary://<your_api_key>:<your_api_secret>@dxf7oesj6"
 )
 
-# Gmail email settings
-os.environ.setdefault("GMAIL_USERNAME", "blazebite24@gmail.com")
-os.environ.setdefault("GMAIL_PASSWORD", "awun ajnk odcg jjgp")  
+
 

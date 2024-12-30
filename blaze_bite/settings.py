@@ -163,3 +163,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Redirect users to login page if they are not authenticated
 LOGIN_URL = '/login/' 
 LOGIN_REDIRECT_URL = 'staff_profile'
+
+#Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = 'd7a897df44af5d'
+EMAIL_HOST_PASSWORD = '4607dd38044d66'
+EMAIL_PORT = '2525'

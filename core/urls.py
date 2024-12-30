@@ -14,6 +14,7 @@ urlpatterns = [
     path('staff/edit-profile/', views.edit_profile, name='edit_profile'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
+    path('contact/confirmation/', views.confirmation, name='confirmation'),
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
 ]

@@ -46,3 +46,14 @@ class StaffUserCreationForm(UserCreationForm):
             StaffProfile.objects.create(user=user)
 
         return user
+        
+class ContactForm(forms.Form):
+    CONTACT_REASONS = [
+        ('inquiry', 'Inquiry'),
+        ('reservation', 'Reservation'),
+    ]
+    
+    name = forms.CharField(max_length=100, required=True, label='Your Name')
+    email = forms.EmailField(required=True, label='Your Email')
+    message = forms.CharField(widget=forms.Textarea, required=True, label='Message')
+    reason = forms.ChoiceField(choices=CONTACT_REASONS, required=True, label='Reason for Contacting')

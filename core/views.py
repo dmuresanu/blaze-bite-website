@@ -3,9 +3,13 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.mail import send_mail
+from django.http import HttpResponse
+from django.conf import settings
 from django.contrib.auth.forms import UserChangeForm
-from .forms import MenuItemForm, BookingForm
+from .forms import MenuItemForm, BookingForm, ContactForm
 from .models import MenuItem, Booking
+
 
 def index(request):
     return render(request, 'index.html')
@@ -32,6 +36,7 @@ def add_menu_item(request, item_id=None):
     return render(request, 'add_menu_item.html', {'form': form, 'item_id': item_id})
 
 # Protect delete_menu_item view with login_required as well
+
 @login_required
 def delete_menu_item(request, item_id):
     item = get_object_or_404(MenuItem, id=item_id)
@@ -73,8 +78,43 @@ def menu(request):
 def about(request):
     return render(request, 'about.html')
 
+# Updated contact view to handle form submission
+
 def contact(request):
-    return render(request, 'contact.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            try:
+                # Sending email to the restaurant
+                send_mail(
+                    'New Contact Form Submission',
+                    form.cleaned_data['message'],
+                    form.cleaned_data['email'],
+                    ['restaurant@example.com'],
+                    fail_silently=False,
+                )
+
+                # Sending confirmation email to the user
+                send_mail(
+                    'Thank you for your message',
+                    'We have received your message and will get back to you soon.',
+                    'no-reply@example.com',
+                    [form.cleaned_data['email']],
+                    fail_silently=False,
+                )
+
+                # After a successful form submission, redirect to the confirmation page
+                return redirect('confirmation')  # Redirect to the confirmation page
+
+            except Exception as e:
+                return HttpResponse(f"An error occurred while sending the email: {e}")
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact.html', {'form': form})
+
+def confirmation(request):
+    return render(request, 'contact/confirmation.html')    
 
 # Booking pages should be accessible without login, as you don't require authentication for bookings
 def booking(request):
